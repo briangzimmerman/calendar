@@ -1,0 +1,51 @@
+#calendar {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Ubuntu';
+}
+
+#month-bar {
+    width: 100vw;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#dow-bar {
+    width: 100vw;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #e7e9ed;
+    font-size: 1.1em;
+}
+
+#dow-bar .dow {
+    width: calc(100vw / 7 - 5px);
+    text-align: center;
+    display: inline-block;
+}
+
+.day {
+    width: calc(100vw / 7 - 5px);
+    display: inline-block;
+    height: 100%;
+    padding: 3px;
+}
+
+.date {
+    display: inline;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.today {
+    background-color: #10989e;
+    color: white;
+}
+
+.day-past, .day-next-month {
+    /* background-color: #fafafa; */
+    color: #949495
+}

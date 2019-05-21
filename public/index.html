@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Google Calendar</title>
+    <link rel='stylesheet' href='/css/main.css'>
+    <link rel='stylesheet' href='/css/index.css'>
+</head>
+<body>
+    <main>
+        <div id='calendar'>
+            <div id='month-bar'></div>
+            <div id='dow-bar'>
+                <div class='dow'>Sunday</div>
+                <div class='dow'>Monday</div>
+                <div class='dow'>Tuesday</div>
+                <div class='dow'>Wednesday</div>
+                <div class='dow'>Thursday</div>
+                <div class='dow'>Friday</div>
+                <div class='dow'>Saturday</div>
+            </div>
+            <div id='weeks-container'></div>
+        </div>
+    </main>
+
+    <script type='text/template' id='day_template'>
+        <div class='day {{status_class}}'>
+            <p class='date {{date_class}}'>{{date}}</p>
+            <div class='events_container'></div>
+        </div>
+    </script>
+
+    <script src='/js/jquery-3.4.1.min.js'></script>
+    <script src='/js/calendar.js'></script>
+    <script src='/js/mustache.js'></script>
+    <script src='/js/index.js'></script>
+</body>
+</html>

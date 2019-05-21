@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('/fonts/Ubuntu/Ubuntu-Regular.ttf');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+    /* font-family: 'Open_Sans'; */
+    box-sizing: border-box;
+}
