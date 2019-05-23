@@ -45,4 +45,19 @@ function Calendar() {
     this.getDate = function() {
         return this.now.getDate();
     }
+
+    this.getRecurringDates = function(start_date, frequency, interval) {
+        var frequencies = {'WEEKLY': 7};
+        var days_between = frequencies[frequency] * interval;
+        var next_month = (new Date(this.now.getFullYear(), this.now.getMonth()+1, 1)).getTime();
+        var this_month = (new Date(this.now.getFullYear(), this.now.getMonth(), 1)).getTime();
+        var dates = [];
+
+        for(var date = Date.parse(start_date); date < next_month; date += (days_between * 86400000)) {
+            if(date < this_month) { continue; }
+            dates.push((new Date(date)).getDate() + 1);
+        }
+
+        return dates;
+    }
 }

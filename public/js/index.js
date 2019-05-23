@@ -46,5 +46,18 @@ $weeks_container.append('<div class="week">'+days.join('')+'</div>');
 $('.week', $weeks_container).css({'height': 'calc(100% / '+num_weeks+')'});
 
 socket.on('events', function(events) {
-    console.log(events);
+    events.forEach(function(event) {
+        if(event.recurrence.length) {
+            var rule_parts = event.recurrence[0].substr(6).split(';');
+            var freq = rule_parts[0].substr(5);
+            var interval = rule_parts[2].substr(-1);
+            var dates = cal.getRecurringDates(event.start.date, freq, interval);
+        } else {
+            var dates = [event.start.date.substr(-2)];
+        }
+
+        dates.forEach(function(date) {
+            $('#day-'+date+' .events-container').append('<p>'+event.summary+'</p>');
+        });
+    });
 });
