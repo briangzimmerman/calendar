@@ -2,6 +2,7 @@ var cal = new Calendar();
 var $cal_container = $('#calendar');
 var $weeks_container = $('#weeks-container', $cal_container);
 var day_template = $('#day_template').html();
+var socket = io();
 
 $('#month-bar', $cal_container).text(cal.getMonth()+' '+cal.getYear());
 
@@ -43,3 +44,7 @@ if(cal.getDOW(num_days) != 6) { num_weeks++; }
 $weeks_container.append('<div class="week">'+days.join('')+'</div>');
 
 $('.week', $weeks_container).css({'height': 'calc(100% / '+num_weeks+')'});
+
+socket.on('events', function(events) {
+    console.log(events);
+});

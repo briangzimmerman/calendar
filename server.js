@@ -2,13 +2,15 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
+const config = require('./config.json');
+const calendar = require('./modules/calendar');
 
 //------------------------------------------------------------------------------
 
 app.use(express.static(`${__dirname}/public`));
 
-server.listen(5555, () => {
-    console.log('Listening on port 5555...');
+server.listen(config.port, () => {
+    console.log(`Listening on port ${config.port}...`);
 });
 
 //------------------------------------------------------------------------------
@@ -16,11 +18,15 @@ server.listen(5555, () => {
 io.on('connection', (socket) => {
     console.log('User connected');
 
-    socket.emit('events', getEvents());
+    emitEvents(socket);
 });
 
 //------------------------------------------------------------------------------
 
-function getEvents() {
-    
+function emitEvents(socket) {
+    calendar.getEvents(config.calendars)
+    .then((events) => {
+        socket.emit('events', events);
+    })
+    .catch((err) => console.log(err));
 }
